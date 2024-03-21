@@ -1,11 +1,7 @@
 package br.com.mercado.principais;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Scanner;
-import java.text.DecimalFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public abstract class Produtos implements Desconto {
     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
