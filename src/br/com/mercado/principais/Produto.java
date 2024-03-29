@@ -7,7 +7,7 @@ import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-public abstract class Produto implements Desconto {
+public abstract class Produto {
     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
     private String nome;
@@ -30,7 +30,6 @@ public abstract class Produto implements Desconto {
         this.dataFabricacao = dataFabricacao;
         this.dataVencimento = dataVencimento;
         this.diasParaVencer = calcularVencimento();
-        this.valorFinal = calcularDesconto();
     }
 
     public String getNome() {
@@ -86,7 +85,6 @@ public abstract class Produto implements Desconto {
     public void setDataVencimento(Date dataVencimento) {
         this.dataVencimento = dataVencimento;
         this.diasParaVencer = calcularVencimento();
-        this.valorFinal = calcularDesconto();
     }
 
     public int getDiasParaVencer() {
@@ -116,29 +114,6 @@ public abstract class Produto implements Desconto {
                 System.out.println();
             }
         }
-    }
-
-    public double calcularDesconto() {
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        Date hoje = new Date();
-        long diferenca = getDataVencimento().getTime() - hoje.getTime();
-        long dias = diferenca / (1000 * 60 * 60 * 24);
-
-        double desconto = 0.0;
-
-        if (dias > 30) {
-
-            desconto = 0.0;
-        } else if (dias <= 30 && dias >= 15) {
-
-            desconto = getPrecoUnitario() * 0.3;
-        } else if (dias < 15 && dias > 0) {
-            desconto = getPrecoUnitario() * 0.65;
-        } else {
-            desconto = 0.0;
-        }
-
-        return getPrecoUnitario() - desconto;
     }
 
     public void imprimirProduto(int indice) {
