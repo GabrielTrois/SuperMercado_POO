@@ -10,7 +10,6 @@ import java.util.Scanner;
 
 import br.com.mercado.principais.Produto;
 import br.com.mercado.principais.ProdutoNaoPerecivel;
-import br.com.mercado.principais.ProdutoPerecivel;
 
 public class Estoque {
 
@@ -44,7 +43,7 @@ public class Estoque {
             int tipo = sc.nextInt();
             if (tipo == 1) {
                 produtos.add(
-                        new ProdutoPerecivel(nome, lote, quantidade, precoUnitario, dataFabricacao, dataVencimento));
+                        new Produto(nome, lote, quantidade, precoUnitario, dataFabricacao, dataVencimento));
             } else if (tipo == 2) {
                 produtos.add(
                         new ProdutoNaoPerecivel(nome, lote, quantidade, precoUnitario, dataFabricacao));

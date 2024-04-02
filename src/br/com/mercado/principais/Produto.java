@@ -7,7 +7,7 @@ import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-public abstract class Produto {
+public class Produto implements Desconto {
     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
     private String nome;
@@ -30,6 +30,7 @@ public abstract class Produto {
         this.dataFabricacao = dataFabricacao;
         this.dataVencimento = dataVencimento;
         this.diasParaVencer = calcularVencimento();
+        this.valorFinal = calcularDesconto();
     }
 
     public String getNome() {
@@ -94,8 +95,35 @@ public abstract class Produto {
     public double getValorFinal() {
         return valorFinal;
     }
+    
+    public int calcularVencimento() {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        Date hoje = new Date();
+        long diferenca = getDataVencimento().getTime() - hoje.getTime();
+        long dias = diferenca / (1000 * 60 * 60 * 24);
+        return (int) dias;
+    }
+    
+    @Override
+    public double calcularDesconto() {
+    	SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        Date hoje = new Date();
+        long diferenca = getDataVencimento().getTime() - hoje.getTime();
+        long dias = diferenca / (1000 * 60 * 60 * 24);
 
-    public abstract int calcularVencimento();
+        double desconto;
+
+        if (dias <= 30 && dias >= 15) {
+            desconto = getPrecoUnitario() * 0.3;
+        } 
+        else if (dias < 15 && dias > 0) {
+            desconto = getPrecoUnitario() * 0.65;
+        } else {
+            desconto = 0.0;
+        }
+
+        return getPrecoUnitario() - desconto;
+    }
 
     public static void listaProdutosVencimento(ArrayList<Produto> produtos) {
         System.out.println("PRODUTOS PRÓXIMO AO VENCIMENTO:");
