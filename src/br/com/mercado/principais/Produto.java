@@ -32,69 +32,6 @@ public class Produto implements Desconto {
         this.diasParaVencer = calcularVencimento();
         this.valorFinal = calcularDesconto();
     }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getLote() {
-        return lote;
-    }
-
-    public void setLote(String lote) {
-        this.lote = lote;
-    }
-
-    public int getQuantidade() {
-        return quantidade;
-    }
-
-    public void setQuantidade(int quantidade) {
-        this.quantidade = quantidade;
-        this.precoTotal = quantidade * precoUnitario;
-    }
-
-    public double getPrecoUnitario() {
-        return precoUnitario;
-    }
-
-    public void setPrecoUnitario(double precoUnitario) {
-        this.precoUnitario = precoUnitario;
-        this.precoTotal = quantidade * precoUnitario;
-    }
-
-    public double getPrecoTotal() {
-        return precoTotal;
-    }
-
-    public Date getDataFabricacao() {
-        return dataFabricacao;
-    }
-
-    public void setDataFabricacao(Date dataFabricacao) {
-        this.dataFabricacao = dataFabricacao;
-    }
-
-    public Date getDataVencimento() {
-        return dataVencimento;
-    }
-
-    public void setDataVencimento(Date dataVencimento) {
-        this.dataVencimento = dataVencimento;
-        this.diasParaVencer = calcularVencimento();
-    }
-
-    public int getDiasParaVencer() {
-        return diasParaVencer;
-    }
-
-    public double getValorFinal() {
-        return valorFinal;
-    }
     
     public int calcularVencimento() {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
@@ -246,5 +183,67 @@ public class Produto implements Desconto {
                 System.out.println("Opção inválida. Nenhuma informação foi atualizada.");
         }
     }
+    
+    public String getNome() {
+        return nome;
+    }
 
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getLote() {
+        return lote;
+    }
+
+    public void setLote(String lote) {
+        this.lote = lote;
+    }
+
+    public int getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
+        this.precoTotal = quantidade * precoUnitario;
+    }
+
+    public double getPrecoUnitario() {
+        return precoUnitario;
+    }
+
+    public void setPrecoUnitario(double precoUnitario) {
+        this.precoUnitario = precoUnitario;
+        this.precoTotal = quantidade * precoUnitario;
+    }
+
+    public double getPrecoTotal() {
+        return precoTotal;
+    }
+
+    public Date getDataFabricacao() {
+        return dataFabricacao;
+    }
+
+    public void setDataFabricacao(Date dataFabricacao) {
+        this.dataFabricacao = dataFabricacao;
+    }
+
+    public Date getDataVencimento() {
+        return dataVencimento;
+    }
+
+    public void setDataVencimento(Date dataVencimento) {
+        this.dataVencimento = dataVencimento;
+        this.diasParaVencer = calcularVencimento();
+    }
+
+    public int getDiasParaVencer() {
+        return diasParaVencer;
+    }
+
+    public double getValorFinal() {
+        return valorFinal;
+    }
 }
