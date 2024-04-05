@@ -9,6 +9,13 @@ public class CartaoFidelidade implements Desconto {
 	private int senha;
 	private int comprasFeitas;
 	
+	public CartaoFidelidade(Pessoa p, int id, int senha, int compras) {
+		this.cliente = p;
+		this.id = id;
+		this.senha = senha;
+		this.comprasFeitas = compras;
+	}
+	
 	@Override
 	public double calcularDesconto() {
 		if(this.comprasFeitas > 10) {
