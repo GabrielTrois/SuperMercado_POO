@@ -3,11 +3,11 @@ package br.com.mercado.principais;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class ProdutosLanchonete extends Produto {
+public class ProdutoLanchonete extends Produto {
 	SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
-	public ProdutosLanchonete(String nome, int quantidade, double precoUnitario, Date dataFabricacao) {
-        super(nome, null, quantidade, precoUnitario, dataFabricacao, null);
+	public ProdutoLanchonete(String nome, int quantidade, double precoUnitario, Date dataFabricacao, Date dataVencimento) {
+        super(nome, null, quantidade, precoUnitario, dataFabricacao, dataVencimento);
     }
     
 	@Override

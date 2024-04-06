@@ -9,6 +9,7 @@ import java.util.Date;
 import java.util.Scanner;
 
 import br.com.mercado.principais.Produto;
+import br.com.mercado.principais.ProdutoLanchonete;
 import br.com.mercado.principais.ProdutoNaoPerecivel;
 
 public class Estoque {
@@ -26,27 +27,43 @@ public class Estoque {
 
     public static void adicionarProduto(ArrayList<Produto> produtos, Scanner sc, SimpleDateFormat sdf) {
         try {
+        	System.out.println("Produto Perecível (1), Não Perecível (2) ou da Lanchonete?");
+            int tipo = sc.nextInt();
+            
             System.out.println("Nome do Produto: ");
             String nome = sc.next();
             sc.nextLine();
-            System.out.println("Lote: ");
-            String lote = sc.nextLine();
-            System.out.println("Quantidade: ");
-            int quantidade = sc.nextInt();
+            
+            String lote = null;
+            if (tipo == 1 || tipo == 2) {
+            	System.out.println("Lote: ");
+            	lote = sc.nextLine();
+            }
+            
+        	System.out.println("Quantidade: ");
+        	int quantidade = sc.nextInt();
+            
             System.out.println("Preço Unitário: ");
             double precoUnitario = sc.nextDouble();
+            
             System.out.println("Data de Fabricação (dd/MM/yyyy): ");
             Date dataFabricacao = sdf.parse(sc.next());
-            System.out.println("Data de Vencimento (dd/MM/yyyy): ");
-            Date dataVencimento = sdf.parse(sc.next());
-            System.out.println("Produto Perecível (1) ou Não Perecível (2)?");
-            int tipo = sc.nextInt();
+            
+            Date dataVencimento = null;
+            if (tipo == 1 || tipo == 3) {
+            	System.out.println("Data de Vencimento (dd/MM/yyyy): ");
+        		dataVencimento = sdf.parse(sc.next());
+        	}
+            
             if (tipo == 1) {
                 produtos.add(
                         new Produto(nome, lote, quantidade, precoUnitario, dataFabricacao, dataVencimento));
             } else if (tipo == 2) {
                 produtos.add(
                         new ProdutoNaoPerecivel(nome, lote, quantidade, precoUnitario, dataFabricacao));
+            } else if (tipo == 3) {
+                produtos.add(
+                        new ProdutoLanchonete(nome, quantidade, precoUnitario, dataFabricacao, dataVencimento));
             } else {
                 System.out.println("Tipo de produto inválido.");
             }
