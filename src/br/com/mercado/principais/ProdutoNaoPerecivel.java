@@ -19,20 +19,20 @@ public class ProdutoNaoPerecivel extends Produto {
     public double calcularDesconto() {
     	SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         Date hoje = new Date();
-        long diferenca = hoje.getTime() - getDataFabricacao().getTime();
+        long diferenca = hoje.getTime() - super.getDataFabricacao().getTime();
         long dias = diferenca / (1000 * 60 * 60 * 24);
 
         double desconto;
         
-        if(dias > 90 && dias < 120) {
-        	desconto = getPrecoUnitario() * 0.3;
+        if(dias > 365 && dias < 2*365) {
+        	desconto = super.getPrecoUnitario() * 0.1;
         } 
-        else if(dias >= 120) {
-        	desconto = getPrecoUnitario() * 0.65;
+        else if(dias >= 2*365) {
+        	desconto = super.getPrecoUnitario() * 0.15;
         } else {
         	desconto = 0.0;
         }
         
-    	return getPrecoUnitario() - desconto;
+    	return super.getPrecoUnitario() - desconto;
     }
 }

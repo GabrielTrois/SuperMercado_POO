@@ -51,10 +51,10 @@ public class Produto implements Desconto {
         double desconto;
 
         if (dias <= 30 && dias >= 15) {
-            desconto = getPrecoUnitario() * 0.3;
+            desconto = getPrecoUnitario() * 0.1;
         } 
         else if (dias < 15 && dias > 0) {
-            desconto = getPrecoUnitario() * 0.65;
+            desconto = getPrecoUnitario() * 0.15;
         } else {
             desconto = 0.0;
         }

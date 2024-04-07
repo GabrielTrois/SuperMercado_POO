@@ -12,8 +12,7 @@ public class ProdutoLanchonete extends Produto {
     
 	@Override
 	public double calcularDesconto() {
-		// TODO Auto-generated method stub
-		return 0;
+		return super.getPrecoUnitario();
 	}
     
 }
