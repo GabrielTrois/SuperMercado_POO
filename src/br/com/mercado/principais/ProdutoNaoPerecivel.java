@@ -6,13 +6,13 @@ import java.util.Date;
 public class ProdutoNaoPerecivel extends Produto {
 	
     public ProdutoNaoPerecivel(String nome, String lote, int quantidade, double precoUnitario, Date dataFabricacao) {
-        super(nome, lote, quantidade, precoUnitario, dataFabricacao, null);
+        super(nome, lote, quantidade, precoUnitario, dataFabricacao, dataFabricacao);
     }
 
     @SuppressWarnings("null")
 	@Override
     public int calcularVencimento() {
-        return (Integer) null;
+        return 0;
     }
     
     @Override

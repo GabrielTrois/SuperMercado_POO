@@ -27,7 +27,7 @@ public class Estoque {
 
     public static void adicionarProduto(ArrayList<Produto> produtos, Scanner sc, SimpleDateFormat sdf) {
         try {
-        	System.out.println("Produto Perecível (1), Não Perecível (2) ou da Lanchonete?");
+        	System.out.println("Produto Perecível (1), Não Perecível (2) ou da Lanchonete(3)?");
             int tipo = sc.nextInt();
             
             System.out.println("Nome do Produto: ");
@@ -67,8 +67,8 @@ public class Estoque {
             } else {
                 System.out.println("Tipo de produto inválido.");
             }
-        } catch (ParseException e) {
-            System.out.println("Formato de data inválido. Use dd/MM/yyyy.");
+        } catch (Exception e) {
+            System.out.println("Use valores validos.");
         }
     }
 

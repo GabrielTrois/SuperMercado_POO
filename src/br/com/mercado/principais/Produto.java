@@ -77,24 +77,45 @@ public class Produto implements Desconto {
                 System.out.println("Dias para vencer: " + diasParaVencer);
                 System.out.println("+-----------------------------+");
                 System.out.println();
-            }
+            }   
+        }
+        System.out.println("PRODUTOS VENCIDOS:");
+	    System.out.println("");
+	    
+        for (Produto produto : produtos) {
+		    
+		    int diasParaVencer = produto.calcularVencimento();
+		    
+		    if (diasParaVencer < 0) {
+		        System.out.println("+-----------------------------+");
+		        System.out.println("Nome: " + produto.getNome());
+		        System.out.println("Quantidade: " + produto.getQuantidade());
+		        System.out.println("Dias vencidos: " + diasParaVencer);
+		        System.out.println("+-----------------------------+");
+		        System.out.println();
+		    }
         }
     }
 
     public void imprimirProduto(int indice) {
         DecimalFormat df = new DecimalFormat("R$ #,##0.00");
+        df.setMaximumFractionDigits(2);
 
         System.out.println("+-----------------------------+");
         System.out.println("Índice: " + indice);
         System.out.println("Nome do Produto: " + nome);
-        System.out.println("Lote: " + lote);
+        if(lote != null) {
+        	System.out.println("Lote: " + lote);
+        }
         System.out.println("Quantidade: " + quantidade);
         System.out.println("Preço Unitário: " + df.format(getPrecoUnitario()));
         System.out.println("Preço Total: " + df.format(getPrecoTotal()));
         System.out.println("Data de Fabricação: " + sdf.format(dataFabricacao));
-        System.out.println("Vencimento: " + sdf.format(dataVencimento));
-        System.out.println("Dias para Vencer: " + diasParaVencer);
-        System.out.println("Valor Final: " + valorFinal);
+        if(dataVencimento != dataFabricacao) {
+        	System.out.println("Vencimento: " + sdf.format(dataVencimento));
+        	System.out.println("Dias para Vencer: " + diasParaVencer);
+        }
+        System.out.println("Valor Final: " + df.format(valorFinal));
         System.out.println("+-----------------------------+");
         System.out.println();
     }
