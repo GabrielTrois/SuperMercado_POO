@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 import br.com.mercado.cliente.Pessoa;
 import br.com.mercado.principais.CartaoFidelidade;
+import br.com.mercado.principais.Produto;
 
 public class RepositorioFidelidade {
 	
@@ -39,8 +40,19 @@ public class RepositorioFidelidade {
         }
 	}
 	
-	public static void cancelarCartao(ArrayList<CartaoFidelidade> cartoes, int id) {
+	public static void cancelarCartao(ArrayList<CartaoFidelidade> cartoes) {
+		if(cartoes.isEmpty()) {
+			System.out.println("Nenhum cliente cadastrado");
+			return;
+		}
+		
 		Scanner sc = new Scanner(System.in);
+		
+		listarCartoes(cartoes);
+		
+		System.out.println("Digite o indice do cartão que quer cancelar: ");
+		int id = sc.nextInt();
+		
 		System.out.println("Tem certeza que deseja remover cartão(1), cancelar(0)");
         int op = sc.nextInt();
         if (op == 1) {
@@ -57,5 +69,36 @@ public class RepositorioFidelidade {
         }
         
         sc.close();
+	}
+	
+	public static void buscarCartao(ArrayList<CartaoFidelidade> cartoes, Scanner sc) {
+		if(cartoes.isEmpty()) {
+			System.out.println("Nenhum cliente cadastrado");
+			return;
+		}
+		
+		System.out.println("Digite o id do cartão: ");
+		int id = sc.nextInt();
+		for (int i = 0; i < cartoes.size(); i++) {
+			int idCartao = cartoes.get(i).getId();
+
+            if (id == idCartao) {
+                cartoes.get(i).imprimirCartao(0);
+                System.out.println();
+            }
+        }
+	}
+	
+	public static void listarCartoes(ArrayList<CartaoFidelidade> cartoes) {
+		if(cartoes.isEmpty()) {
+			System.out.println("Nenhum cliente cadastrado");
+			return;
+		}
+		System.out.println("LISTA DE PRODUTOS");
+
+        for (int i = 0; i < cartoes.size(); i++) {
+            cartoes.get(i).imprimirCartao(i);
+            System.out.println();
+        }
 	}
 }

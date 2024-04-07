@@ -31,6 +31,16 @@ public class CartaoFidelidade implements Desconto {
 		}
 	}
 
+	public void imprimirCartao(int index) {
+		System.out.println("+-----------------------------+");
+		System.out.println("Index: " + index);
+		System.out.println("Cliente: " + this.cliente.getNome());
+		System.out.println("Cpf: " + this.cliente.getCpf());
+		System.out.println("Idade: " + this.cliente.getIdade());
+		System.out.println("Id do cartão: " + this.id);
+		System.out.println("Compras feitas: " + this.comprasFeitas);
+		System.out.println("+-----------------------------+");
+	}
 	
 	public Pessoa getCliente() {
 		return cliente;
